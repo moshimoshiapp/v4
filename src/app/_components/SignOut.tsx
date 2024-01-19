@@ -1,17 +1,23 @@
 'use client'
-import React from 'react'
+
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Database } from '../../../types/supabase'
+import { useRouter } from 'next/navigation'
 
-export default async function SignOut() {
 
-    const supabase = createClientComponentClient<Database>()
+export default function SignOut() {
 
-    const handleSignIn = async () => {
+  const supabase = createClientComponentClient<Database>()
+
+  const router = useRouter()
+
+  const handleSignOut = async () => {
         await supabase.auth.signOut()
-    };
+        router.refresh()
+    }
 
   return (
-    <button onClick={handleSignIn}>Sign Out</button>
+    <button onClick={handleSignOut}>Sign Out</button>
   )
+
 }

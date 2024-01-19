@@ -1,14 +1,12 @@
 'use client'
 
-import React, {useState} from 'react'
-import Link from 'next/link'
+import React from 'react'
 import Image from 'next/image'
-import { signOut } from "next-auth/react"
 
 
 const Caller = () => {
     return (
-        <div className='h-full bg-zinc-950 rounded-2xl p-4'>   
+       
         <div className='flex flex-col space-y-4 overflow-hidden'>
           <div className='bg-zinc-900 rounded-xl p-4'>
           <div className='flex flex-row space-x-4 items-center'>
@@ -28,6 +26,8 @@ const Caller = () => {
                   className='size-5 fill-zinc-500'
                   src='/wallet-icon.svg'
                   alt="Wallet"
+                  width={16}
+                  height={16}
               />
                 MoshiMoshi Wallet
               </div>
@@ -48,25 +48,7 @@ const Caller = () => {
           </div>
   
         </div>
-        <div className='h-96'></div>
-  
-        <div className='text-right text-haute-pink'>
-        <ul>
-        <li>
-            <Link href='/'>Account Settings</Link>
-          </li>
-          <li>
-            <Link href='/'>Help & Support</Link>
-          </li>
-          <li>
-            <Link href='/'>Send Feedback</Link>
-          </li>
-          <li>
-          <button onClick={() => signOut()}>Sign Out</button> 
-          </li>
-        </ul>
-        </div>
-        </div> 
+        
     )  
 }
 

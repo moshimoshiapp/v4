@@ -1,9 +1,13 @@
-'use client'
+import { cookies } from 'next/headers'
+import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
+import { Database } from '/var/www/moshimoshi_app/types/supabase'
+import CallerSignUp from '../../_components/CallerSignUp'
 
-import Link from 'next/link'
 
+export default async function Page() {
 
-export default function Page() {
+  const cookieStore = cookies()
+  const supabase = createServerActionClient<Database>({ cookies: () => cookieStore })
 
     return (
     
@@ -11,7 +15,7 @@ export default function Page() {
           <div className='flex flex-col space-y-4 p-8'>
             
             <div className='text-xl text-gray-400'>
-            caller form goes here
+            <CallerSignUp />
             </div>
 
           </div>

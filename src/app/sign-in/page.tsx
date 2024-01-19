@@ -1,11 +1,13 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
+import { Database } from '/var/www/moshimoshi_app/types/supabase'
 import SignIn from '../_components/SignIn'
 
 
 export default async function Page() {
 
-  const supabase = createServerComponentClient({ cookies }) 
+  const cookieStore = cookies()
+  const supabase = createServerActionClient<Database>({ cookies: () => cookieStore })
 
     return (
     
